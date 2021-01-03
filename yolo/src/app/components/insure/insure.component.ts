@@ -30,7 +30,8 @@ export class InsureComponent implements OnInit {
       phone:  ['',Validators.required], 
       address:  ['',Validators.required],
       pictureURL:  ['',Validators.required],
-      // comments:''
+      brand:  ['',Validators.required],
+
     });
   }
   ngOnInit(): void {
@@ -72,7 +73,7 @@ export class InsureComponent implements OnInit {
 
 
   onSubmit(value){
-    window.alert(JSON.stringify(value))
+    window.alert('success')
   }
 
 
