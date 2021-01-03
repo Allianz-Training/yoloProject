@@ -49,21 +49,61 @@ label{
   margin-right: 10px;
   font-size: 20px;
   font-weight: 100;
-  /* position: relative; */
-  /* right: 100px; */
+
 }
+.chooseFile{
+  padding:20px
   
-  .example-header-image {
-    background-size: cover;
-    background-color: white;
+}  
+.mat-radio-button{
+ padding-right: 15px;
+}
+
+
+  @media only screen and (max-width: 1200px) {
+    .home{
+      height: -webkit-fit-content;
+      height: -moz-fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      /* justify-content: center; */
+      align-items: center;
+      margin-top: 60px;
+      gap: 50px;
+    }
+    
   }
-  .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
+  @media only screen and (max-width: 600px) {
+    .title{
+      font-size: 30px;
+      margin:20px;
+      margin-top: 20px;
+      color: #2E4174;
+      text-align: center;
+      line-height: initial;
+      font-weight: bold;
   
-  .example-full-width {
-    width: 100%;
+  }
+    .home{
+      height: -webkit-fit-content;
+      height: -moz-fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      /* justify-content: center; */
+      align-items: center;
+      margin-top: 60px;
+      gap: 50px;
+    }
+    .body{
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      /* justify-content: center; */
+      /* align-items: center; */
+      
+  }
+    
   }
   

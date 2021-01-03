@@ -7,29 +7,46 @@
   <mat-card class="example-card">
     <mat-card-header style="position: relative;
     top: -20px;">
-      <mat-card-title>INFORMATION</mat-card-title>
+      <mat-card-title style="font-size: 30px;">INFORMATION</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div class="body"><p>
+      <div class="body"><p style="font-size: 20px;">
         Please inform the following forms.
       </p>
 
       <div class="form">
-      <label for="firstname" >Firstname :
-        <span style="color: red;" *ngIf="form.get('firstname').errors?.required">
+      <label for="firstName" >Firstname :
+        <span style="color: red;" *ngIf="form.get('firstName').errors?.required">
           *</span><br>
       </label>
-       <input class="form-control"  formControlName="firstname"
-       placeholder="firstname" ngModel name="firstname"  >
+       <input class="form-control"  formControlName="firstName"
+       placeholder="firstName"  name="firstName"  >
     </div>
 
     <div class="form">
-      <label for="lastname">Lastname :
-        <span style="color: red;" *ngIf="form.get('lastname').errors?.required">
+      <label for="lastName">LastName :
+        <span style="color: red;" *ngIf="form.get('lastName').errors?.required">
           *</span><br>
       </label>
-       <input type="text"id="lastname"  formControlName="lastname"
-       ngModel name="lastname"  placeholder="lastname">
+       <input type="text"id="lastName"  formControlName="lastName"
+        name="lastName"  placeholder="lastName">
+    </div>
+
+    <div class="form">
+      <label for="gender">Gender :
+        <span style="color: red;" *ngIf="form.get('gender').errors?.required">
+          *</span><br>
+      </label>
+      <mat-radio-group aria-label="Select an option"
+      formControlName="gender"
+       style="margin-top: 15px;">
+        <mat-radio-button  value="Male">Male </mat-radio-button>
+        <mat-radio-button  value="Female">Female </mat-radio-button>
+        <mat-radio-button value="Others">Others </mat-radio-button>
+      </mat-radio-group>
+
+       <!-- <input type="text"id="gender"  formControlName="gender"
+        name="gender"  placeholder="gender">    -->
     </div>
 
     <div class="form">
@@ -38,7 +55,7 @@
           *</span><br>
       </label>
        <input type="text"id="email"  formControlName="email"
-       ngModel name="email"  placeholder="email">   
+        name="email"  placeholder="ex. kajonsak@sma.com">   
     </div>
 
     <div class="form">
@@ -47,7 +64,7 @@
           *</span><br>
       </label>
        <input type="text"id="phone"  formControlName="phone"
-       ngModel name="phone"  placeholder="phone number">   
+        name="phone"  placeholder="phone number ">   
     </div>
 
     <div class="form">
@@ -56,49 +73,62 @@
           *</span><br>
       </label>
        <input type="text"id="address"  formControlName="address"
-       ngModel name="addressssss"  placeholder="address">   
+        name="address"  placeholder="address">   
     </div>
+
+    <div class="form">
+      <label for="idcard">Peron Id :
+        <span style="color: red;" *ngIf= "form.get('idcard').errors?.required 
+        || form.get('idcard').errors?.minLength" >
+          *</span><br>
+      </label>
+       <input type="text"id="idcard"  formControlName="idcard"
+        name="idcard"  placeholder="must be 13 characters">   
+    </div>
+
+
+    <mat-form-field appearance="fill" class="form" style="font-size: 20px;">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateofbirth">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 
     </div>    
   </mat-card-content> 
 </mat-card>
 
-<mat-card class="example-card">
-    <mat-card-header style="position: relative;
-    top: -20px;">
-      <mat-card-title>ASSETS</mat-card-title>
-      <div style="width: 500px;">
-        <mat-icon>image</mat-icon>
-      </div>
-    </mat-card-header>
-    
-    <img mat-card-image style="height: 400px;
-       background-color: white;" [src]= "imgUrl">
-       
-     <mat-card-content>
-       <p>
-         Please chooses image of assets you want.
-      </p>
-      <input type="file" #Image accept="image/*"
-      (change)="handleFileInput($event.target.files)"
-      id="img" class=""
-       ngModel name="img" required>
-    </mat-card-content>
-    <mat-card-actions>
+    <mat-card class="example-card">
+      <mat-card-header style="position: relative;
+      top: -20px;">
+        <mat-card-title style="font-size: 30px;">ASSETS</mat-card-title>
+        <div style="width: 500px;">
+          <mat-icon>image</mat-icon>
+        </div>
+        </mat-card-header>
+          
+          <img mat-card-image style="height: 400px;
+            background-color: white;" [src]= "imgUrl"> 
+          <mat-card-content>
+            <p style="font-size: 20px;">Please chooses image of assets you want.</p>
 
-      <!-- <input
-      style="display: none"
-      type="file" (change)="onFileChanged($event)"
-      #fileInput> -->
-      <!-- <button mat-button style="background-color: #6d7bb3;"  (click)="fileInput.click()">Select File</button> -->
-      <!-- <button mat-button style="background-color: #6d7bb3;"(click)="onUpload()" >Upload</button> -->
-    </mat-card-actions>
-  </mat-card>
+              <input type="file" #Image accept="image/*"
+              (change)="handleFileInput($event.target.files)"
+              id="img" class="chooseFile" formControlName ="pictureURL"
+               name="img" required
+              >
+          </mat-card-content>
+
+        <mat-card-actions></mat-card-actions>
+    </mat-card>
   
 </div> 
 <div style="display: flex;justify-content: center;">
-  <button mat-flat-button type="submit"  ngModel name="imgUrl" id="imgUrl"
-  [disabled]="form.invalid || Image.value=='' " (click)="addPost()"
+  <button mat-flat-button type="submit"   name="imgUrl" id="imgUrl"
+  
+ [disabled]="form.invalid || Image.value=='' " 
+  
+  (click)="addPost()"
   style="background-color:#6D7BB3;  
       height: 70px;    
       width: 250px;
@@ -106,6 +136,6 @@
       font-size:24px ;
       ">
       SUBMIT</button>
-
-</div>
-</form>
+      
+    </div>
+</form> 

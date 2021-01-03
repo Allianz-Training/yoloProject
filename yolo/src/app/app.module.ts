@@ -23,8 +23,10 @@ import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 // import { HttpClient } from '@angular/common/http';
 // import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import {MatRadioModule} from '@angular/material/radio';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -65,6 +67,8 @@ const appRoutes: Routes = [
     MatCardModule,
     MatInputModule,
     MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // <-- debugging purposes only set true

@@ -20,23 +20,26 @@ export class InsureComponent implements OnInit {
   form: FormGroup;
 
   constructor(private httpClient: HttpClient, private fb: FormBuilder) {
-    this.form = this.fb.group({
-      firstname:  ['',Validators.required], 
-      lastname:  ['',Validators.required], 
+    this.form = this.fb.group({      
+      idcard: ['',[Validators.required,Validators.minLength(13)]],
+      firstName:  ['',Validators.required], 
+      lastName:  ['',Validators.required], 
+      dateofbirth:  ['',Validators.required],
       email: ['',[Validators.required,Validators.email]],
+      gender:  ['',Validators.required],
       phone:  ['',Validators.required], 
       address:  ['',Validators.required],
+      pictureURL:  ['',Validators.required],
       // comments:''
     });
   }
   ngOnInit(): void {
     this.insure = new Insure();
     this.loadPost();
-
   }
+
   handleFileInput(file: FileList){
     this.fileToUpload =file.item(0);
-
     var reader = new FileReader();
     reader.onload = (event:any)=>{
       this.imgUrl = event.target.result;
@@ -47,24 +50,26 @@ export class InsureComponent implements OnInit {
   loadPost() {
     this.posts = [];
     this.httpClient
-      .get('https://jsonplaceholder.typicode.com/posts')
+      // .get('https://jsonplaceholder.typicode.com/posts')
+      .get('http://localhost:8080/users/')
       .subscribe(result => {
         this.posts = result as any[];
       });
   }
   addPost() {
     const newPost = this.form.value;
+    console.log(newPost)
     this.httpClient
-      .post('https://jsonplaceholder.typicode.com/posts', newPost)
+      // .post('https://jsonplaceholder.typicode.com/posts', newPost)
+      .post('http://localhost:8080/users/', newPost)
       .subscribe(result => {
         this.form.reset();
-        alert('Add Post Success !');
-        this.loadPost();
+        alert(result);
+        // alert('Add Post Success !');
+        // this.loadPost();
       });
     }
-    // submitForm() {
-    //   alert(JSON.stringify(this.form.value));
-    // }
+
 
   onSubmit(value){
     window.alert(JSON.stringify(value))

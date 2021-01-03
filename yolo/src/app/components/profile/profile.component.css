@@ -20,17 +20,9 @@
 }
 .left{
     width: 50%;
-    /* border: 1px solid grey; */
-    /* background-color: honeydew; */
-    /* padding: 100px; */
 }
 .right{
     width: 50%;
-    /* border: 1px solid grey; */
-    /* background-color: rgb(42, 121, 42); */
-    /* padding: 100px; */
-
-
 }
 h2{
     color: white;
@@ -66,4 +58,31 @@ mat-icon{
     color: white;
     position: relative;
     top: 20px;
+    left: 20px;
 }
+.icon_title1{
+    font-weight: 200;
+    color: white;
+    position: relative;
+    top: 20px;
+    font-size: 25px;
+}
+
+@media only screen and (max-width: 700) {
+    b{
+        font-size: 30px;
+        position: relative;
+        top: 16px;
+    }
+
+    
+    .icon_title{
+        font-weight: bold;
+        color: white;
+        position: relative;
+        top: 20px;
+        left: 20px;
+        font-size: 20px;
+    }   
+    
+  }
